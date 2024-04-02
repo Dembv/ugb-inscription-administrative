@@ -1,16 +1,16 @@
 <h1>Projet de Gestion des Inscriptions Administratives - Université Gaston Berger</h1>
 Ce projet est une application web développée en utilisant le framework Laravel pour gérer les processus d'inscription administrative à l'Université Gaston Berger.
 
-Fonctionnalités
+<h3>Fonctionnalités</h3>
 Inscription des étudiants: Permet aux étudiants de s'inscrire en ligne en fournissant leurs informations personnelles et académiques.
 Gestion des filières et des cours: Administration des filières et des cours proposés par l'université.
 Gestion des utilisateurs: Administration des comptes etudiant.
 Reporting: Génération de certificats sur les inscriptions.
-Configuration Requise
+<h3>Configuration Requise</h3>
 PHP >= 7.3
 Composer
 MySQL
-Installation
+<h3>Installation</h3>
 Clonez le dépôt depuis GitHub :
 bash
 Copy code
