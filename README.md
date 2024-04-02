@@ -1,4 +1,4 @@
-Projet de Gestion des Inscriptions Administratives - Université Gaston Berger
+<h1>Projet de Gestion des Inscriptions Administratives - Université Gaston Berger</h1>
 Ce projet est une application web développée en utilisant le framework Laravel pour gérer les processus d'inscription administrative à l'Université Gaston Berger.
 
 Fonctionnalités
