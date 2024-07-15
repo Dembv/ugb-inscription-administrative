@@ -1,16 +1,16 @@
-<h1>Projet de Gestion des Inscriptions Administratives - Université Gaston Berger</h1>
+# Projet de Gestion des Inscriptions Administratives - Université Gaston Berger
 Ce projet est une application web développée en utilisant le framework Laravel pour gérer les processus d'inscription administrative à l'Université Gaston Berger.
 
-<h3>Fonctionnalités</h3>
+## 1. Fonctionnalités
 Inscription des étudiants: Permet aux étudiants de s'inscrire en ligne en fournissant leurs informations personnelles et académiques.
 Gestion des filières et des cours: Administration des filières et des cours proposés par l'université.
 Gestion des utilisateurs: Administration des comptes etudiant.
 Reporting: Génération de certificats sur les inscriptions.
-<h3>Configuration Requise</h3>
+# 2. Configuration Requise
 PHP >= 7.3
 Composer
 MySQL
-<h3>Installation</h3>
+# 3. Installation
 Clonez le dépôt depuis GitHub :
 git clone https://github.com/votrenomdutilisateur/projet-inscriptions-ugb.git
 Accédez au répertoire du projet :
@@ -54,13 +54,20 @@ Lancez le serveur de développement :
 php artisan serve
 ```
 
-Contribuer
+## 4. Contributions
 Les contributions sont les bienvenues ! Pour contribuer à ce projet, veuillez suivre ces étapes :
-**Fork the repository**
-**Create your feature branch (git checkout -b feature/YourFeature)
+** Fork the repository **
+
+Create your feature branch (git checkout -b feature/YourFeature)
+
 Commit your changes (git commit -m 'Add some feature')
+
 Push to the branch (git push origin feature/YourFeature)
+
 Create a new Pull Request
-Auteurs
+
+### Auteurs
+
 Nom de l'auteur
-Email de l'auteur**
+
+Email de l'auteur
