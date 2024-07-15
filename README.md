@@ -20,7 +20,10 @@ MySQL
 
 ## 3. Installation
 Clonez le dépôt depuis GitHub :
-git clone https://github.com/votrenomdutilisateur/projet-inscriptions-ugb.git
+```bash
+git clone https://github.com/Dembv/ugb-inscription-administrative.git
+```
+
 Accédez au répertoire du projet :
 
 ```bash
@@ -66,11 +69,20 @@ php artisan serve
 Les contributions sont les bienvenues ! Pour contribuer à ce projet, veuillez suivre ces étapes :
 **Fork the repository**
 
-Create your feature branch (git checkout -b feature/YourFeature)
+Create your feature branch 
+```bash
+git checkout -b feature/YourFeature
+```
 
-Commit your changes (git commit -m 'Add some feature')
+Commit your changes 
+```bash
+git commit -m 'Add some feature')
+```
 
-Push to the branch (git push origin feature/YourFeature)
+Push to the branch 
+```bash
+git push origin feature/YourFeature
+```
 
 Create a new Pull Request
 
