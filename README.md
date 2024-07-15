@@ -86,8 +86,7 @@ git push origin feature/YourFeature
 
 Create a new Pull Request
 
-### Auteurs
+## 5. Auteurs
 
-Nom de l'auteur
-
-Email de l'auteur
+Demba Hamet Guissé
+guissedembahamet@gmail.com
