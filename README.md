@@ -6,11 +6,11 @@ Inscription des étudiants: Permet aux étudiants de s'inscrire en ligne en four
 Gestion des filières et des cours: Administration des filières et des cours proposés par l'université.
 Gestion des utilisateurs: Administration des comptes etudiant.
 Reporting: Génération de certificats sur les inscriptions.
-# 2. Configuration Requise
+## 2. Configuration Requise
 PHP >= 7.3
 Composer
 MySQL
-# 3. Installation
+## 3. Installation
 Clonez le dépôt depuis GitHub :
 git clone https://github.com/votrenomdutilisateur/projet-inscriptions-ugb.git
 Accédez au répertoire du projet :
