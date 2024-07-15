@@ -14,8 +14,10 @@ MySQL
 Clonez le dépôt depuis GitHub :
 git clone https://github.com/votrenomdutilisateur/projet-inscriptions-ugb.git
 Accédez au répertoire du projet :
-```bash
+```
+
 cd projet-inscriptions-ugb
+
 ```
 Installez les dépendances PHP via Composer :
 bash copy code composer install
