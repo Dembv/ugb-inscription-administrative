@@ -14,46 +14,53 @@ MySQL
 Clonez le dépôt depuis GitHub :
 git clone https://github.com/votrenomdutilisateur/projet-inscriptions-ugb.git
 Accédez au répertoire du projet :
-```
 
+```bash
 cd projet-inscriptions-ugb
-
 ```
+
 Installez les dépendances PHP via Composer :
-bash copy code composer install
+```bash 
+composer install
+```
+
 Copiez le fichier .env.example et renommez-le en .env :
-bash
-Copy code
+```bash
 cp .env.example .env
+```
+
 Générez une clé d'application Laravel :
-bash
-Copy code
+```bash
 php artisan key:generate
+```
+
 Configurez votre base de données dans le fichier .env :
-makefile
-Copy code
+```makefile
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=nom_de_votre_base_de_donnees
 DB_USERNAME=votre_nom_utilisateur
 DB_PASSWORD=votre_mot_de_passe
+```
+
 Exécutez les migrations pour créer les tables de base de données :
-bash
-Copy code
+```bash
 php artisan migrate
+```
+
 Lancez le serveur de développement :
-bash
-Copy code
+```bash
 php artisan serve
+```
+
 Contribuer
 Les contributions sont les bienvenues ! Pour contribuer à ce projet, veuillez suivre ces étapes :
-
-Fork the repository
-Create your feature branch (git checkout -b feature/YourFeature)
+**Fork the repository**
+**Create your feature branch (git checkout -b feature/YourFeature)
 Commit your changes (git commit -m 'Add some feature')
 Push to the branch (git push origin feature/YourFeature)
 Create a new Pull Request
 Auteurs
 Nom de l'auteur
-Email de l'auteur
+Email de l'auteur**
