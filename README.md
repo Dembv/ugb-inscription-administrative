@@ -12,17 +12,13 @@ Composer
 MySQL
 <h3>Installation</h3>
 Clonez le dépôt depuis GitHub :
-bash
-Copy code
 git clone https://github.com/votrenomdutilisateur/projet-inscriptions-ugb.git
 Accédez au répertoire du projet :
 bash
 Copy code
-cd projet-inscriptions-ugb
+`cd projet-inscriptions-ugb`
 Installez les dépendances PHP via Composer :
-bash
-Copy code
-composer install
+bash copy code composer install
 Copiez le fichier .env.example et renommez-le en .env :
 bash
 Copy code
