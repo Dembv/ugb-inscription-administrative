@@ -27,7 +27,7 @@ git clone https://github.com/Dembv/ugb-inscription-administrative.git
 Accédez au répertoire du projet :
 
 ```bash
-cd projet-inscriptions-ugb
+cd ugb-inscription-administrative
 ```
 
 Installez les dépendances PHP via Composer :
