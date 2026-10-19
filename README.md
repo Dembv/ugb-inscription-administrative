@@ -1,92 +1,131 @@
-# Projet de Gestion des Inscriptions Administratives - Université Gaston Berger
-Ce projet est une application web développée en utilisant le framework Laravel pour gérer les processus d'inscription administrative à l'Université Gaston Berger.
+# UGB : Gestion des inscriptions administratives
 
-## 1. Fonctionnalités
-**Inscription des étudiants**: Permet aux étudiants de s'inscrire en ligne en fournissant leurs informations personnelles et académiques.
+![Laravel](https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)
 
-**Gestion des filières et des cours**: Administration des filières et des cours proposés par l'université.
+Application web **Laravel** de gestion des inscriptions administratives de l'Université Gaston Berger (UGB). Le service de scolarité gère les étudiants et le référentiel académique ; chaque étudiant s'inscrit en ligne et télécharge son **certificat d'inscription en PDF**.
 
-**Gestion des utilisateurs**: Administration des comptes etudiant.
+---
 
-**Reporting**: Génération de certificats sur les inscriptions.
+## Fonctionnalités
 
-## 2. Configuration Requise
+**Page d'accueil** (publique) : présentation, annonces publiées par la scolarité (paginées).
 
-PHP >= 7.3
+**Espace scolarité** (`/scolarite`)
+- Création, modification et suppression des étudiants, avec photo. La création génère automatiquement le compte : identifiant `nom.prenom`, e-mail institutionnel `nom.prenom@ugb.edu.sn`, code étudiant préfixé par `P`.
+- Gestion des formations, niveaux et années académiques
+- Gestion des inscriptions
+- Publication d'informations (annonces de la page d'accueil)
 
-Composer
+**Espace étudiant** (`/etudiant`)
+- Consultation de son profil et mise à jour de ses coordonnées (e-mail personnel, téléphone, adresse)
+- Inscription en ligne : choix de la formation, du niveau et de l'année académique (une seule inscription par année)
+- Historique de ses inscriptions et génération du certificat d'inscription en PDF (DomPDF)
 
-MySQL
+L'authentification se fait par e-mail et mot de passe ; l'utilisateur est redirigé vers son espace selon son rôle.
 
-## 3. Installation
-Clonez le dépôt depuis GitHub :
+## Stack technique
+
+| Couche | Outils |
+|---|---|
+| Back-end | Laravel 10, Eloquent, Form Requests, middleware `auth` |
+| Front-end | Blade, Bootstrap, Font Awesome |
+| Base de données | MySQL (migrations Laravel) |
+| PDF | `barryvdh/laravel-dompdf` |
+
+**Tables principales** : `users`, `roles`, `students`, `formations`, `levels`, `years`, `registrations`, `informations`.
+
+**Rôles** : `1` = étudiant, `2` = scolarité.
+
+## Prérequis
+
+- PHP 8.1 ou plus récent
+- Composer
+- MySQL ou MariaDB
+
+## Installation
+
 ```bash
 git clone https://github.com/Dembv/ugb-inscription-administrative.git
-```
-
-Accédez au répertoire du projet :
-
-```bash
 cd ugb-inscription-administrative
-```
-
-Installez les dépendances PHP via Composer :
-```bash 
 composer install
-```
-
-Copiez le fichier .env.example et renommez-le en .env :
-```bash
 cp .env.example .env
-```
-
-Générez une clé d'application Laravel :
-```bash
 php artisan key:generate
 ```
 
-Configurez votre base de données dans le fichier .env :
-```makefile
+Renseignez la base de données dans `.env` :
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nom_de_votre_base_de_donnees
-DB_USERNAME=votre_nom_utilisateur
-DB_PASSWORD=votre_mot_de_passe
+DB_DATABASE=ugb_inscription
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-Exécutez les migrations pour créer les tables de base de données :
+Créez les tables et le lien vers le stockage public (photos des étudiants et images des annonces) :
+
 ```bash
 php artisan migrate
+php artisan storage:link
 ```
 
-Lancez le serveur de développement :
+### Créer les rôles et le premier compte scolarité
+
+Aucun seeder n'est fourni : créez les rôles et un premier compte scolarité avec Tinker.
+
+```bash
+php artisan tinker
+```
+
+```php
+DB::table('roles')->insert([
+    ['id' => 1, 'libelle_role' => 'etudiant'],
+    ['id' => 2, 'libelle_role' => 'scolarite'],
+]);
+
+$u = new App\Models\User;
+$u->name = 'scolarite';
+$u->email = 'scolarite@ugb.edu.sn';
+$u->password = 'changez-moi';   // haché automatiquement par le modèle
+$u->role = 2;
+$u->save();
+```
+
+### Lancer l'application
+
 ```bash
 php artisan serve
 ```
 
-## 4. Contributions
-Les contributions sont les bienvenues ! Pour contribuer à ce projet, veuillez suivre ces étapes :
-**Fork the repository**
+Ouvrez `http://127.0.0.1:8000`, connectez-vous avec le compte scolarité, puis créez les formations, niveaux, années académiques et étudiants.
 
-Create your feature branch 
-```bash
-git checkout -b feature/YourFeature
+## Structure du projet
+
+```
+app/Http/Controllers/
+├── AuthController.php          # Connexion / déconnexion, redirection selon le rôle
+├── Scolarite/                  # Étudiants, formations, niveaux, années, inscriptions, informations
+└── Etudiant/
+    ├── StudentController.php   # Espace étudiant, mise à jour du profil, inscription
+    └── PdfController.php       # Certificat d'inscription PDF
+resources/views/
+├── accueil.blade.php
+├── auth/  scolarite/  etudiant/
+routes/web.php
 ```
 
-Commit your changes 
-```bash
-git commit -m 'Add some feature')
-```
+## Contribuer
 
-Push to the branch 
-```bash
-git push origin feature/YourFeature
-```
+1. Forkez le dépôt
+2. Créez une branche : `git checkout -b feature/ma-fonctionnalite`
+3. Commitez : `git commit -m "Ajoute ma fonctionnalité"`
+4. Poussez : `git push origin feature/ma-fonctionnalite`
+5. Ouvrez une Pull Request
 
-Create a new Pull Request
+## Auteur
 
-## 5. Auteurs
-
-Demba Hamet Guissé
-guissedembahamet@gmail.com
+Demba Hamet Guissé, guissedembahamet@gmail.com
